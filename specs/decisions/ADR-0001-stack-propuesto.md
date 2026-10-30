@@ -27,8 +27,31 @@ propuesta**, no como decisión aprobada. El grupo debe confirmar el stack, las v
 la biblioteca de gráficos y la estrategia de comunicación antes de cerrar los planes de
 implementación.
 
+### Restricción: sin Docker
+
+El grupo decidió **no utilizar Docker** para el desarrollo. Cada servicio (front-end, Java y
+Python) se ejecuta localmente con su propio comando y puerto. PostgreSQL se instala
+localmente o se usa una instancia en un servicio en la nube. Esta restricción no confirma
+versiones ni proveedores concretos.
+
+### Front-end confirmado (parcial)
+
+El grupo confirmó el stack de front-end: **React con Vite, TypeScript, Tailwind CSS y
+Chart.js**. Se ejecuta localmente con el servidor de desarrollo de Vite y se despliega sin
+contenedores. Esta confirmación no incluye versiones; el backend, la base de datos y la
+estrategia de comunicación siguen pendientes.
+
 ## Consecuencias
 
+- Sin Docker: la configuración (credenciales, URLs, puertos) se externaliza en variables de
+  entorno, con un archivo de ejemplo versionado y sin secretos.
+- Los servicios se comunican entre puertos distintos, por lo que debe habilitarse CORS o un
+  proxy de desarrollo.
+- El grupo debe acordar las versiones de herramientas (JDK, Python, Node) para evitar
+  diferencias entre entornos.
+- Las migraciones de base de datos deben ser reproducibles para que cada integrante
+  obtenga el mismo esquema.
+- La propuesta de despliegue debe contemplar una plataforma que no dependa de contenedores.
 - Los requisitos deben permanecer independientes de frameworks y versiones.
 - Los planes pueden describir la arquitectura propuesta, identificándola como pendiente.
 - No crear dependencias, scaffolding ni contratos irreversibles basados únicamente en esta
@@ -38,8 +61,14 @@ implementación.
 
 ## Confirmación
 
-Pendiente de confirmación por el grupo.
+Confirmado parcialmente por el grupo: stack de front-end (React + Vite, TypeScript,
+Tailwind CSS, Chart.js). Pendiente de confirmación: backend Java, servicio Python, base de
+datos, versiones y estrategia de comunicación.
 
 ## Historial
 
 - 2026-10-29: registro inicial como propuesta basada en `README.md` y `CONSIGNA-TP.md`.
+- 2026-10-30: se registra la restricción de no usar Docker y sus consecuencias; el estado
+  sigue en Propuesta.
+- 2026-10-30: se confirma el stack de front-end (React + Vite, TypeScript, Tailwind CSS,
+  Chart.js), sin Docker; el resto del stack sigue pendiente.
