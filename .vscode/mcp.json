@@ -1,0 +1,14 @@
+{
+  "servers": {
+    "sdd-workflow": {
+      "type": "stdio",
+      "command": "node",
+      "args": [
+        "${workspaceFolder}/tools/sdd-mcp/server.mjs"
+      ],
+      "env": {
+        "SDD_WORKSPACE_ROOT": "${workspaceFolder}"
+      }
+    }
+  }
+}
